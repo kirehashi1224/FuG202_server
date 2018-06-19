@@ -24,8 +24,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
+__pycache__
+.idea/
 db.sqlite3
 *.pyc
 *.pyo
-__pycache__
+
