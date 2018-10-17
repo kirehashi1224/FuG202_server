@@ -29,7 +29,7 @@ class RestaurantFilter(filters.FilterSet):
         model = Restaurant
         # フィルタを列挙する。
         # デフォルトの検索方法でいいなら、モデルフィールド名のフィルタを直接定義できる。
-        fields = ['name', 'address', 'random_extract']
+        fields = ['name', 'address', 'id', 'random_extract']
 
 
 class RestaurantViewSet(viewsets.ModelViewSet):
