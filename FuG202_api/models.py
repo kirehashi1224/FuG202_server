@@ -14,8 +14,3 @@ class Restaurant(models.Model):
     timespans = models.CharField(max_length=200)
     image = models.CharField(max_length=200)
     tags = models.ManyToManyField(Tag, related_name='restaurants')
-
-
-class Genre(models.Model):
-    name = models.CharField(max_length=20)
-    restaurant_id = models.IntegerField()

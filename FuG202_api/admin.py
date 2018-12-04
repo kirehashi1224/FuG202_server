@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Restaurant, Tag, Genre
+from .models import Restaurant, Tag
 
 
 @admin.register(Restaurant)
@@ -10,9 +10,4 @@ class Restaurant(admin.ModelAdmin):
 
 @admin.register(Tag)
 class Tag(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Genre)
-class Genre(admin.ModelAdmin):
     pass

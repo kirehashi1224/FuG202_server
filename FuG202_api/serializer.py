@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Restaurant, Genre, Tag
+from .models import Restaurant, Tag
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -17,9 +17,3 @@ class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
         fields = ('id', 'name', 'address', 'timespans', 'image', 'tags')
-
-
-class GenreSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Genre
-        fields = ('name', 'restaurant_id')

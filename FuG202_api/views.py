@@ -1,12 +1,10 @@
-import  django_filters
 import random
 from rest_framework import viewsets
 from django_filters import rest_framework as filters
-from rest_framework.views import APIView
 
 
-from .models import Restaurant, Genre, Tag
-from .serializer import RestaurantSerializer, GenreSerializer, TagSerializer
+from .models import Restaurant, Tag
+from .serializer import RestaurantSerializer, TagSerializer
 
 
 class RestaurantFilter(filters.FilterSet):
@@ -53,11 +51,6 @@ class RestaurantViewSet(viewsets.ModelViewSet):
     serializer_class = RestaurantSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = RestaurantFilter
-
-
-class GenreViewSet(viewsets.ModelViewSet):
-    queryset = Genre.objects.all()
-    serializer_class = GenreSerializer
 
 
 class TagViewSet(viewsets.ModelViewSet):
