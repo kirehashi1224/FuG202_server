@@ -15,21 +15,18 @@ class RestaurantFilter(filters.FilterSet):
         name="priceTags",
         queryset=PriceTag.objects.all(),
         to_field_name='id',
-        conjoined=True,
         lookup_expr='exact'
     )
     genreTags = filters.ModelMultipleChoiceFilter(
         name="genreTags",
         queryset=GenreTag.objects.all(),
         to_field_name='id',
-        conjoined=True,
         lookup_expr='exact'
     )
     distanceTags = filters.ModelMultipleChoiceFilter(
         name="distanceTags",
         queryset=DistanceTag.objects.all(),
         to_field_name='id',
-        conjoined=True,
         lookup_expr='exact'
     )
     random_extract = filters.CharFilter(method='filter_random_extract')
