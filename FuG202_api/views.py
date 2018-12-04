@@ -3,17 +3,31 @@ from rest_framework import viewsets
 from django_filters import rest_framework as filters
 
 
-from .models import Restaurant, Tag
-from .serializer import RestaurantSerializer, TagSerializer
+from .models import Restaurant, PriceTag, GenreTag, DistanceTag
+from .serializer import RestaurantSerializer, PriceTagSerializer, GenreTagSerializer, DistanceTagSerializer
 
 
 class RestaurantFilter(filters.FilterSet):
     # フィルタの定義
     name = filters.CharFilter(name="name", lookup_expr='contains')
     address = filters.CharFilter(name="address", lookup_expr='contains')
-    tags = filters.ModelMultipleChoiceFilter(
-        name="tags",
-        queryset=Tag.objects.all(),
+    priceTags = filters.ModelMultipleChoiceFilter(
+        name="priceTags",
+        queryset=PriceTag.objects.all(),
+        to_field_name='id',
+        conjoined=True,
+        lookup_expr='exact'
+    )
+    genreTags = filters.ModelMultipleChoiceFilter(
+        name="genreTags",
+        queryset=GenreTag.objects.all(),
+        to_field_name='id',
+        conjoined=True,
+        lookup_expr='exact'
+    )
+    distanceTags = filters.ModelMultipleChoiceFilter(
+        name="distanceTags",
+        queryset=DistanceTag.objects.all(),
         to_field_name='id',
         conjoined=True,
         lookup_expr='exact'
@@ -35,15 +49,31 @@ class RestaurantFilter(filters.FilterSet):
         model = Restaurant
         # フィルタを列挙する。
         # デフォルトの検索方法でいいなら、モデルフィールド名のフィルタを直接定義できる。
-        fields = ['name', 'address', 'id', 'random_extract', 'tags']
+        fields = ['name', 'address', 'id', 'random_extract', 'priceTags', 'genreTags', 'distanceTags']
 
 
-class TagFilter(filters.FilterSet):
-    tag_name = filters.CharFilter(name="tag_name", lookup_expr='contains')
+class PriceTagFilter(filters.FilterSet):
+    name = filters.CharFilter(name="name", lookup_expr='contains')
 
     class Meta:
-        model = Tag
-        fields = ['tag_name']
+        model = PriceTag
+        fields = ['name']
+
+
+class GenreTagFilter(filters.FilterSet):
+    name = filters.CharFilter(name="name", lookup_expr='contains')
+
+    class Meta:
+        model = GenreTag
+        fields = ['name']
+
+
+class DistanceTagFilter(filters.FilterSet):
+    name = filters.CharFilter(name="name", lookup_expr='contains')
+
+    class Meta:
+        model = DistanceTag
+        fields = ['name']
 
 
 class RestaurantViewSet(viewsets.ModelViewSet):
@@ -53,7 +83,19 @@ class RestaurantViewSet(viewsets.ModelViewSet):
     filter_class = RestaurantFilter
 
 
-class TagViewSet(viewsets.ModelViewSet):
-    queryset = Tag.objects.all()
-    serializer_class = TagSerializer
-    filter_class = TagFilter
+class PriceTagViewSet(viewsets.ModelViewSet):
+    queryset = PriceTag.objects.all()
+    serializer_class = PriceTagSerializer
+    filter_class = PriceTagFilter
+
+
+class GenreTagViewSet(viewsets.ModelViewSet):
+    queryset = GenreTag.objects.all()
+    serializer_class = GenreTagSerializer
+    filter_class = GenreTagFilter
+
+
+class DistanceTagViewSet(viewsets.ModelViewSet):
+    queryset = DistanceTag.objects.all()
+    serializer_class = DistanceTagSerializer
+    filter_class = DistanceTagFilter
