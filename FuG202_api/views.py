@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from .models import Restaurant, Genre
 from .serializer import RestaurantSerializer, GenreSerializer
 
+
 class RestaurantFilter(filters.FilterSet):
     # フィルタの定義
     name = filters.CharFilter(name="name", lookup_expr='contains')
@@ -36,6 +37,7 @@ class RestaurantViewSet(viewsets.ModelViewSet):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
     filter_class = RestaurantFilter
+
 
 class GenreViewSet(viewsets.ModelViewSet):
     queryset = Genre.objects.all()
