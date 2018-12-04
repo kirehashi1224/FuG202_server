@@ -5,8 +5,8 @@ from django_filters import rest_framework as filters
 from rest_framework.views import APIView
 
 
-from .models import Restaurant, Genre
-from .serializer import RestaurantSerializer, GenreSerializer
+from .models import Restaurant, Genre, Tag
+from .serializer import RestaurantSerializer, GenreSerializer, TagSerializer
 
 
 class RestaurantFilter(filters.FilterSet):
@@ -42,3 +42,8 @@ class RestaurantViewSet(viewsets.ModelViewSet):
 class GenreViewSet(viewsets.ModelViewSet):
     queryset = Genre.objects.all()
     serializer_class = GenreSerializer
+
+
+class TagViewSet(viewsets.ModelViewSet):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
