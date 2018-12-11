@@ -25,7 +25,7 @@ SECRET_KEY = '93ph6&#)-953k86cn*951_p=(93!#w%3@x_s+$p$a1a(rf08#_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get("IP_ADDR", "127.0.0.1")]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'FuG202_api',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +84,11 @@ DATABASES = {
 }
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+}
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -120,3 +126,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

@@ -29,4 +29,6 @@ __pycache__
 db.sqlite3
 *.pyc
 *.pyo
-
+nohup.out
+/media/*
+!/media/.keep
