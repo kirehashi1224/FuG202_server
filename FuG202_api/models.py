@@ -26,7 +26,7 @@ class Restaurant(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     timespans = models.CharField(max_length=200)
-    image = models.CharField(max_length=200)
+    image = models.CharField(max_length=200, null=True, blank=True)
     priceTags = models.ManyToManyField(PriceTag, related_name='restaurants')
     genreTags = models.ManyToManyField(GenreTag, related_name='restaurants')
     distanceTags = models.ManyToManyField(DistanceTag, related_name='restaurants')
