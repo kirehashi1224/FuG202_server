@@ -25,7 +25,7 @@ SECRET_KEY = '93ph6&#)-953k86cn*951_p=(93!#w%3@x_s+$p$a1a(rf08#_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ os.environ.get("IP_ADDR", "127.0.0.1") ]
+ALLOWED_HOSTS = [os.environ.get("IP_ADDR", "127.0.0.1")]
 
 
 # Application definition
