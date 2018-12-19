@@ -46,7 +46,7 @@ class RestaurantFilter(filters.FilterSet):
         model = Restaurant
         # フィルタを列挙する。
         # デフォルトの検索方法でいいなら、モデルフィールド名のフィルタを直接定義できる。
-        fields = ['name', 'address', 'id', 'random_extract', 'priceTags', 'genreTags', 'distanceTags']
+        fields = ['name', 'address', 'id', 'priceTags', 'genreTags', 'distanceTags', 'random_extract']
 
 
 class PriceTagFilter(filters.FilterSet):
